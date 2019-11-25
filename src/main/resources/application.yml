@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://176.53.162.124:5432/postgres
+    username: postgresadmin
+    password: Onoq1kbv
+  jpa:
+    generate-ddl: false
+    show-sql: false
+    hibernate:
+      ddl-auto: validate
