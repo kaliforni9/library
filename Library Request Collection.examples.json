@@ -1,0 +1,338 @@
+{
+	"info": {
+		"_postman_id": "aac633fa-f39c-49fb-915a-8815ae0293fc",
+		"name": "Library Request Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetBookByName",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"По РисОВаниЮ\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/library/getBookByName",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"library",
+						"getBookByName"
+					]
+				},
+				"description": "API для получения книги по названию. Вместо \"name\" необходимо указать название или часть названия интересующей книги."
+			},
+			"response": []
+		},
+		{
+			"name": "GetBookByAuthor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fio\": \"ФеДоРОв\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/library/getBookByAuthor",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"library",
+						"getBookByAuthor"
+					]
+				},
+				"description": "API для получения книги по автору. Вместо \"fio\" необходимо указать имя/фамилию/отчество автора."
+			},
+			"response": []
+		},
+		{
+			"name": "CreateBook",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Новая книга\",\n        \"pageCount\": 1001,\n        \"description\": \"Книга для тех, кто хочет создать новую книгу\",\n        \"author\": {\n              \"id\": 2\n        }\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/library/createBook",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"library",
+						"createBook"
+					]
+				},
+				"description": "API для создания новой книги. Необходимо передать имя книги, кол-во страниц, описание и id автора."
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllBooks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/library/getAllBooks",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"library",
+						"getAllBooks"
+					]
+				},
+				"description": "API для получения всех имеющихся книг."
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteBook",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\t\"id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/library/deleteBook",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"library",
+						"deleteBook"
+					]
+				},
+				"description": "API для удаления книги по id."
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateBook",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\t\"id\": 10,\n        \"name\": \"Книга по играм (обновленная)\",\n        \"pageCount\": 5050,\n        \"description\": \"Книга для тех, кто хочет научиться играть (обновленная версия)\",\n        \"author\": {\n            \"id\": 5\n        }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/library/updateBook",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"library",
+						"updateBook"
+					]
+				},
+				"description": "API для обновления информации в уже существующей книге."
+			},
+			"response": []
+		},
+		{
+			"name": "CreateAuthor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"fio\": \"Сергеев Сергей Сергеевич\",\n        \"birthday\": \"1950-11-12\",\n        \"email\": \"sergeev@email.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/library/createAuthor",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"library",
+						"createAuthor"
+					]
+				},
+				"description": "API для создания нового автора."
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllAuthors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/library/getAllAuthors",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"library",
+						"getAllAuthors"
+					]
+				},
+				"description": "API для получения всех авторов."
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteAuthor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\t\"id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/library/deleteAuthor",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"library",
+						"deleteAuthor"
+					]
+				},
+				"description": "API для удаления автора по id"
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateAuthor",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\t\"id\": 1,\n        \"fio\": \"ПетровОв ПетрТр ПетровичИч\",\n        \"birthday\": \"1950-10-01\",\n        \"email\": \"petrovov@email.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/library/updateAuthor",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"library",
+						"updateAuthor"
+					]
+				},
+				"description": "API для обновления данных уже имеющегося автора."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
