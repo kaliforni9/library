@@ -2,7 +2,6 @@ package com.library.business.mapping;
 
 import com.library.business.domain.Author;
 import com.library.business.domain.Book;
-import com.library.business.dto.AuthorBookDto;
 import com.library.business.dto.AuthorDto;
 import org.mapstruct.Mapper;
 
@@ -11,20 +10,20 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface AuthorMapping {
 
-    AuthorDto mapAuthorToAuthorDto(Author author);
+    AuthorDto map(Author author);
 
-    Author mapAuthorDtoToAuthor(AuthorDto authorDto);
+    Author map(AuthorDto authorDto);
 
-    AuthorBookDto mapBookToAuthorBookDto(Book book);
+    AuthorDto.BookDto mapAuthorBook(Book book);
 
-    Book mapAuthorBookDtoToBook(AuthorBookDto bookDto);
+    Book mapAuthorBook(AuthorDto.BookDto bookDto);
 
-    List<Author> mapAuthorDtoListToAuthor(List<AuthorDto> authorDto);
+    List<Author> mapListDto(List<AuthorDto> authorDto);
 
-    List<AuthorDto> mapAuthorListToAuthorDtoList(List<Author> author);
+    List<AuthorDto> mapListEntities(List<Author> author);
 
-    List<Book> mapAuthorBookDtoListToBookList(List<AuthorBookDto> bookDto);
+    List<Book> mapListBooksDto(List<AuthorDto.BookDto> bookDto);
 
-    List<AuthorBookDto> mapBookListToAuthorBookDtoList(List<Book> book);
+    List<AuthorDto.BookDto> mapListBooksEntities(List<Book> book);
 
 }

@@ -2,19 +2,24 @@ package com.library.business.services.impl;
 
 import com.library.business.dao.AuthorDao;
 import com.library.business.dao.BookDao;
+import com.library.business.domain.Author;
 import com.library.business.domain.Book;
 import com.library.business.dto.BookDto;
+import com.library.business.exceptions.AlreadyExistException;
+import com.library.business.exceptions.NotFoundException;
 import com.library.business.mapping.BookMapping;
 import com.library.business.services.BookService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
 public class BookServiceImpl implements BookService {
-
     private final AuthorDao authorDao;
 
     private final BookDao bookDao;
@@ -22,36 +27,51 @@ public class BookServiceImpl implements BookService {
     private final BookMapping bookMapping;
 
     @Override
-    public List<Book> getBookByName(String name) {
-        return bookDao.findAllByNameContainingIgnoreCaseOrderByName(name);
+    public List<BookDto> getBookByName(String name) {
+        return bookMapping.mapListEntities(bookDao.findAllByNameContainingIgnoreCaseOrderByName(name));
     }
 
     @Override
-    public List<Book> getBooksByAuthor(String fio) {
-        return bookDao.findAllByAuthorFioContainingIgnoreCaseOrderByName(fio);
+    public List<BookDto> getBooksByAuthor(String fio) {
+        return bookMapping.mapListEntities(bookDao.findAllByAuthorFioContainingIgnoreCaseOrderByName(fio));
     }
 
     @Override
-    public List<Book> getAllBooks() {
-        return bookDao.findAll();
+    public List<BookDto> getAllBooks() {
+        return bookMapping.mapListEntities(bookDao.findAll());
     }
 
     @Override
-    public void createBook(BookDto bookDto) {
-        Book book = bookMapping.mapBookDtoToBook(bookDto);
-        book.setAuthor(authorDao.findById(bookDto.getAuthor().getId()).get());
-        bookDao.save(book);
+    public BookDto createBook(BookDto bookDto) {
+        Book book = bookMapping.map(bookDto);
+        Optional<Author> author = authorDao.findById(bookDto.getAuthor().getId());
+        if (author.isPresent()) {
+            book.setAuthor(author.get());
+        } else {
+            throw new NotFoundException(String.format("Автор с ID = %s не найден", bookDto.getAuthor().getId()));
+        }
+
+        ExampleMatcher matcher = ExampleMatcher.matchingAll()
+                .withIgnoreNullValues()
+                .withIgnoreCase();
+        Example<Book> example = Example.of(book, matcher);
+        if (bookDao.findAll(example).size() > 0) {
+            throw new AlreadyExistException("Такая книга уже есть");
+        }
+
+        return bookMapping.map(bookDao.save(book));
     }
 
     @Override
-    public void deleteBook(BookDto bookDto) {
-        Book book = bookMapping.mapBookDtoToBook(bookDto);
+    public boolean deleteBook(BookDto bookDto) {
+        Book book = bookMapping.map(bookDto);
         bookDao.delete(book);
+        return bookDao.existsById(book.getId());
     }
 
     @Override
-    public void updateBook(BookDto bookDto) {
-        Book book = bookMapping.mapBookDtoToBook(bookDto);
-        bookDao.save(book);
+    public BookDto updateBook(BookDto bookDto) {
+        Book book = bookMapping.map(bookDto);
+        return bookMapping.map(bookDao.save(book));
     }
 }

@@ -1,18 +1,15 @@
 package com.library.business.services;
 
-import com.library.business.domain.Author;
 import com.library.business.dto.AuthorDto;
 
 import java.util.List;
 
 public interface AuthorService {
+    List<AuthorDto> getAllAuthor();
 
-    List<Author> getAllAuthor();
+    AuthorDto createAuthor(AuthorDto authorDto);
 
-    void createAuthor(AuthorDto authorDto);
+    boolean deleteAuthor(AuthorDto authorDto);
 
-    void deleteAuthor(AuthorDto authorDto);
-
-    void updateAuthor(AuthorDto authorDto);
-
+    AuthorDto updateAuthor(AuthorDto authorDto);
 }

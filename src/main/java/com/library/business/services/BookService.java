@@ -1,21 +1,19 @@
 package com.library.business.services;
 
-import com.library.business.domain.Book;
 import com.library.business.dto.BookDto;
 
 import java.util.List;
 
 public interface BookService {
+    List<BookDto> getBookByName(String name);
 
-    List<Book>  getBookByName(String name);
+    List<BookDto> getBooksByAuthor(String fio);
 
-    List<Book> getBooksByAuthor(String fio);
+    List<BookDto> getAllBooks();
 
-    List<Book> getAllBooks();
+    BookDto createBook(BookDto bookDto);
 
-    void createBook(BookDto bookDto);
+    boolean deleteBook(BookDto bookDto);
 
-    void deleteBook(BookDto bookDto);
-
-    void updateBook(BookDto bookDto);
+    BookDto updateBook(BookDto bookDto);
 }
