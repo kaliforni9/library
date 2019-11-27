@@ -2,6 +2,8 @@ package com.library.business.dto;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class BookDto {
 
@@ -9,6 +11,14 @@ public class BookDto {
     private String name;
     private Long pageCount;
     private String description;
-    private BookAuthorDto author;
+    private AuthorDto author;
+
+    @Data
+    public static class AuthorDto {
+        private Long id;
+        private String fio;
+        private Date birthday;
+        private String email;
+    }
 
 }
