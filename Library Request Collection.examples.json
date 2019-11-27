@@ -27,13 +27,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/library/getBookByName",
+					"raw": "localhost:8080/library/book/getBookByName",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"library",
+						"book",
 						"getBookByName"
 					]
 				},
@@ -63,13 +64,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/library/getBookByAuthor",
+					"raw": "localhost:8080/library/book/getBookByAuthor",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"library",
+						"book",
 						"getBookByAuthor"
 					]
 				},
@@ -99,13 +101,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/library/createBook",
+					"raw": "localhost:8080/library/book/createBook",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"library",
+						"book",
 						"createBook"
 					]
 				},
@@ -119,13 +122,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/library/getAllBooks",
+					"raw": "localhost:8080/library/book/getAllBooks",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"library",
+						"book",
 						"getAllBooks"
 					]
 				},
@@ -155,13 +159,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/library/deleteBook",
+					"raw": "localhost:8080/library/book/deleteBook",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"library",
+						"book",
 						"deleteBook"
 					]
 				},
@@ -191,13 +196,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/library/updateBook",
+					"raw": "localhost:8080/library/book/updateBook",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"library",
+						"book",
 						"updateBook"
 					]
 				},
@@ -227,13 +233,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/library/createAuthor",
+					"raw": "localhost:8080/library/author/createAuthor",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"library",
+						"author",
 						"createAuthor"
 					]
 				},
@@ -247,13 +254,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/library/getAllAuthors",
+					"raw": "localhost:8080/library/author/getAllAuthors",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"library",
+						"author",
 						"getAllAuthors"
 					]
 				},
@@ -283,13 +291,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/library/deleteAuthor",
+					"raw": "localhost:8080/library/author/deleteAuthor",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"library",
+						"author",
 						"deleteAuthor"
 					]
 				},
@@ -319,17 +328,39 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/library/updateAuthor",
+					"raw": "localhost:8080/library/author/updateAuthor",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"library",
+						"author",
 						"updateAuthor"
 					]
 				},
 				"description": "API для обновления данных уже имеющегося автора."
+			},
+			"response": []
+		},
+		{
+			"name": "CreateRandomAuthor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/library/author/createRandomAuthor",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"library",
+						"author",
+						"createRandomAuthor"
+					]
+				},
+				"description": "Содаёт случайного автора через randomuser api"
 			},
 			"response": []
 		}
